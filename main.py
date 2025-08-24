@@ -23,6 +23,9 @@ ds = ds.map(scale_images)     #scale images to 0-1
 ds = ds.cache()               #cache data after scaling(to avoid re-scaling every epoch)
 ds = ds.shuffle(60000)        #shuffle data to randomize order
 ds = ds.batch(128)            #batch data to process multiple images at once
-ds = ds.repeat()              #repeat data for multiple epochs
-ds = ds.prefetch(64)          #prefetch data to avoid idle time
+ds = ds.prefetch(64)          #prefetch data to avoid bottlenecking
+
+print(ds.as_numpy_iterator().next().shape) #(128, 28, 28, 1)=batch size, height, width, channels
+
+
 
