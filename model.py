@@ -59,3 +59,8 @@ def build_discriminator():
 
 discriminator = build_discriminator()
 discriminator.summary()
+
+
+# value=discriminator.predict(img)  
+# print(value)  #values close to 0 are real, values close to 1 are fake
+
